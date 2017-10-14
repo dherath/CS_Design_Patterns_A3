@@ -46,7 +46,8 @@ public class AirportSecurity
      *@return the operation Ids
      **/
     public String getResponse(){
-	currentState.getResponse();
+	String temp = currentState.getResponse();
+	return temp;
     }
 
     //------------------------------------------

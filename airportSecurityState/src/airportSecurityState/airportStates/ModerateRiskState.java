@@ -12,7 +12,7 @@ public class ModerateRiskState implements AirportStateInterface
      *Constructor
      *@param the airport security 
      **/
-    public LowRiskState(AirportSecurity airportSecurity){
+    public ModerateRiskState(AirportSecurity airportSecurity){
 	this.airportSecurity = airportSecurity;
 	this.operations = airportSecurity.getModerateRiskOperations();
     }
