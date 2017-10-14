@@ -22,6 +22,7 @@ public class AirportSecurity
     private int prevTimeStamp; // the previous time stamp of a traveller for the same day
     private int prbItemsCount;//total number of prohibited items
     private int noOfTravellers; //total number of travellers
+    private String[] prbItems;// list of prohibited items
     
     /**
      *Constructor
@@ -35,6 +36,7 @@ public class AirportSecurity
 	prevTimeStamp = 0;
 	prbItemsCount = 0;
 	noOfTravellers = 0;
+	prbItems = new String[]{"Gun","NailCutter","Blade","Knife"};
 	//---------------------------------------
 	lowRiskState = new LowRiskState(this);
 	moderateRiskState = new ModerateRiskState(this);
