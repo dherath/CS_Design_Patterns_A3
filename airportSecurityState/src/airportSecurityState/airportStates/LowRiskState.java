@@ -4,7 +4,7 @@ import airportSecurityState.airportSecurity.AirportSecurity;
 
 public class LowRiskState implements AirportStateInterface
 {
-    private String operations;//the operations for Low risk state
+    private int[] operations;//the operations for Low risk state
     private AirportSecurity airportSecurity;
 
 

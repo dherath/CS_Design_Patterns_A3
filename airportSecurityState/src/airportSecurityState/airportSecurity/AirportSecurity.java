@@ -8,9 +8,9 @@ import airportSecurityState.airportStates.HighRiskState;
 public class AirportSecurity
 {
     //-------- operations ----------------------
-    private String[] lowRiskOperations;
-    private String[] moderateRiskOperations;
-    private String[] highRiskOperations;
+    private int[] lowRiskOperations;
+    private int[] moderateRiskOperations;
+    private int[] highRiskOperations;
     //------- states ---------------------------
     private AirportStateInterface currentState;
     private AirportStateInterface lowRiskState;
@@ -41,36 +41,7 @@ public class AirportSecurity
 	currentState.tightenOrLoosenSecurity(avgTraffic,avgProhibtedItems);
     }
 
-    
 
-    //-------------------------------------------
-    // getter methods for Operations
-    //-------------------------------------------
-    /**
-     *getter for low risk operations
-     *@return the string operations for low risk
-     **/
-    public String[] getLowRiskOperations(){
-	return lowRiskOperations;
-    }
-    
-
-    /**
-     *getter for moderate risk operations
-     *@return the string operations for moderate risk
-     **/
-    public String[] getModerateRiskOperations(){
-	return moderateRiskOperations;
-    }
-
-    
-    /**
-     *getter for high risk operations
-     *@return the string operations for high risk
-     **/
-    public String[] getHighRiskOperations(){
-	return highRiskOperations;
-    }
 
     //------------------------------------------
     // getter methods for states
@@ -112,6 +83,35 @@ public class AirportSecurity
 	this.currentState = newState;
     }
     
+ 
+    //-------------------------------------------
+    // getter methods for Operations
+    //-------------------------------------------
+    /**
+     *getter for low risk operations
+     *@return the operations for low risk
+     **/
+    public int[] getLowRiskOperations(){
+    return lowRiskOperations;
+    }
+    
+
+    /**
+     *getter for moderate risk operations
+     *@return the operations for moderate risk
+     **/
+    public int[] getModerateRiskOperations(){
+    return moderateRiskOperations;
+    }
+
+    
+    /**
+     *getter for high risk operations
+     *@return the operations for high risk
+     **/
+    public int[] getHighRiskOperations(){
+    return highRiskOperations;
+    }
     
     //-------------------------------------------
     // private  Helper functions
@@ -127,17 +127,17 @@ public class AirportSecurity
      *@param the size of all the operations
      **/
     private void setLowAndHighRiskOperations(int size){
-	lowRiskOperations = new String[5];
-	highRiskOperations = new String[5];	
+	lowRiskOperations = new int[5];
+	highRiskOperations = new int[5];	
 	int count1=0;
 	int count2=0;
 	//----------------------------------------
 	for(int i=0;i<size;i++){
 	    if(i%2==0){
-		this.lowRiskOperations[count1]=i;
+		lowRiskOperations[count1]=i;
 		count1++;
 	    }else{
-		this.highRiskOperations[count2]=i;
+		highRiskOperations[count2]=i;
 		count2++;
 	    }
 	}
@@ -147,7 +147,7 @@ public class AirportSecurity
      *helper function to set moderate risk operations
      **/
     private void setModerateRiskOperations(){
-	moderateRiskOperations = {'2','3','5','8','9'};
+	moderateRiskOperations = new int[]{2,3,5,8,9};
     }
     
 }
