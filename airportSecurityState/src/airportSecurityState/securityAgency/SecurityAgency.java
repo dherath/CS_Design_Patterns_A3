@@ -23,6 +23,12 @@ public class AirportSecurityAgency
 	this.setLowAndHighRiskOperations(10);
 	this.setModerateRiskOperations();
 	//---------------------------------------
+	lowRiskState = new LowRiskState(this);
+	moderateRiskState = new ModerateRiskState(this);
+	highRiskState = new HighRiskState(this);
+
+	currentState = lowRiskState; //intiitally it is assumed that the airport is at low risk
+	//---------------------------------------
     }
 
     /**
