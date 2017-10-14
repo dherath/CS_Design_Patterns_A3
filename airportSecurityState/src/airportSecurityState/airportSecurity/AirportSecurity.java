@@ -33,7 +33,7 @@ public class AirportSecurity
     }
 
     /**
-     *changes state of aiport security
+     *computes changes to aiport security state
      *@param avgTraffic, the average traffic per day
      *@param avgProhibteditems, the average prohibitted items per day
      **/
@@ -73,12 +73,42 @@ public class AirportSecurity
     //------------------------------------------
     // getter methods for states
     //------------------------------------------
+
+    /**
+     *returns the low risk state
+     *@return the low risk state
+     **/
+    public AirportStateInterface getLowRiskState(){
+	return lowRiskState;
+    }
+
+    /**
+     *returns the moderate risk state
+     *@return the moderate risk state
+     **/
+    public AirportStateInterface getModerateRiskState(){
+	return moderateRiskState;
+    }
     
-
-
+    /**
+     *returns the high risk state
+     *@return the high risk state
+     **/
+    public AirportStateInterface getHighRiskState(){
+	return highRiskState;
+    }
+    
     //-----------------------------------------
     // setter methods for states
     //-----------------------------------------
+
+    /**
+     *sets current state to low risk
+     *@param the new state
+     **/
+    public void setState(AirportStateInterface newState){
+	this.currentState = newState;
+    }
     
     
     //-------------------------------------------

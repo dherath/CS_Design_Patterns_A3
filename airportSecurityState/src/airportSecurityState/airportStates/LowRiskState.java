@@ -18,9 +18,15 @@ public class LowRiskState implements AirportStateInterface
     }
 
     //-------------- state Interface Implementations -------------
-
+    /**
+     *changes the state from low risk to moderate or high if needed
+     *@param avgTraffic, the average traffic per day
+     *@param avgProhibteditems, the average Prohibited items per day
+     **/
     public void tightenOrLoosenSecurity(double avgTraffic, double avgProhibtedItems){
-	
+	if(avgTraffic >=4 || avgProhibtedItems >=1 ){
+	    
+	}
     }
     
     
