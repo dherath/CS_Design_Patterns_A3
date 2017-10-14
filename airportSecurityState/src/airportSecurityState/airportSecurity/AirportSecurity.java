@@ -41,7 +41,13 @@ public class AirportSecurity
 	currentState.tightenOrLoosenSecurity(avgTraffic,avgProhibtedItems);
     }
 
-
+    /**
+     *returns the required operations for current state asa a string
+     *@return the operation Ids
+     **/
+    public String getResponse(){
+	currentState.getResponse();
+    }
 
     //------------------------------------------
     // getter methods for states

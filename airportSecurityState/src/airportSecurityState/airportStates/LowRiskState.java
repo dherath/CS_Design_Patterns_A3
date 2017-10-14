@@ -10,7 +10,7 @@ public class LowRiskState implements AirportStateInterface
 
     /**
      *Constructor
-     *@param the airport security agency
+     *@param the airport security 
      **/
     public LowRiskState(AirportSecurity airportSecurity){
 	this.airportSecurity = airportSecurity;
@@ -32,6 +32,19 @@ public class LowRiskState implements AirportStateInterface
 		airportSecurity.setState(airportSecurity.getHighRiskState());
 	    }
 	}
+    }
+
+    /**
+     *gets the list of operations as a one line string
+     *@return the set of operations for low risk
+     **/
+    public String getResponse(){
+	String temp = "";
+	for(int i=0;i<operations.length-1;i++){
+	    temp += operations[i];
+	}
+	temp += operations[operations.length-1] + "\n";
+	return temp;
     }
     
     
