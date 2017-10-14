@@ -32,6 +32,15 @@ public class AirportSecurity
 	currentState = lowRiskState; //intiitally it is assumed that the airport is at low risk
     }
 
+    /**
+     *changes state of aiport security
+     *@param avgTraffic, the average traffic per day
+     *@param avgProhibteditems, the average prohibitted items per day
+     **/
+    public void tightenOrLoosenSecurity(double avgTraffic, double avgProhibtedItems){
+	currentState.tightenOrLoosenSecurity(avgTraffic,avgProhibtedItems);
+    }
+
     //-------------------------------------------
     // getter methods for Operations
     //-------------------------------------------

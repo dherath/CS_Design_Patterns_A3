@@ -20,7 +20,7 @@ public class LowRiskState implements AirportStateInterface
     //-------------- state Interface Implementations -------------
 
     public void tightenOrLoosenSecurity(double avgTraffic, double avgProhibtedItems){
-	
+	if(avgTraffic >=4 ||  )
     }
     
     
