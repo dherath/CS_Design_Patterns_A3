@@ -4,6 +4,7 @@ import airportSecurityState.airportStates.AirportStateInterface;
 import airportSecurityState.airportStates.LowRiskState;
 import airportSecurityState.airportStates.ModerateRiskState;
 import airportSecurityState.airportStates.HighRiskState;
+import airportSecurityState.util.FileProcessor;
 
 public class AirportSecurity
 {
@@ -23,11 +24,15 @@ public class AirportSecurity
     private int prbItemsCount;//total number of prohibited items
     private int noOfTravellers; //total number of travellers
     private String[] prbItems;// list of prohibited items
+    //------------------------------------------
+    private FileProcessor inputFile;// input file
+    private String line;//a single line read from input file
+
     
     /**
      *Constructor
      **/
-    public AirportSecurity(){
+    public AirportSecurity(String inputFileName){
 	//---------------------------------------
 	this.setLowAndHighRiskOperations(10);
 	this.setModerateRiskOperations();
@@ -43,7 +48,15 @@ public class AirportSecurity
 	highRiskState = new HighRiskState(this);
 	currentState = lowRiskState; //intiitally it is assumed that the airport is at low risk
 	//---------------------------------------
-	
+	inputFile = new FileProcessor(inputFileName);
+	try{
+	    
+	}catch(RuntimeException e){
+	    e.printStackTrace();
+	    System.exit(1);
+	}finally{
+	    inputFile.closeAll();
+	}	
     }
 
     /**
