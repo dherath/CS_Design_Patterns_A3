@@ -16,6 +16,12 @@ public class AirportSecurity
     private AirportStateInterface lowRiskState;
     private AirportStateInterface moderateRiskState;
     private AirportStateInterface highRiskState;
+    //------------------------------------------
+    private int numberOfDays;//total number of days 
+    private int previousDay; // the index of the previous day
+    private int prevTimeStamp; // the previous time stamp of a traveller for the same day
+    private int prbItemsCount;//total number of prohibited items
+    private int noOfTravellers; //total number of travellers
     
     /**
      *Constructor
@@ -24,12 +30,17 @@ public class AirportSecurity
 	//---------------------------------------
 	this.setLowAndHighRiskOperations(10);
 	this.setModerateRiskOperations();
+	numberOfDays = 0;
+	currentDay = 0;
+	prbItemsCount = 0;
+	noOfTravellers = 0;
 	//---------------------------------------
 	lowRiskState = new LowRiskState(this);
 	moderateRiskState = new ModerateRiskState(this);
 	highRiskState = new HighRiskState(this);
-
 	currentState = lowRiskState; //intiitally it is assumed that the airport is at low risk
+	//---------------------------------------
+	
     }
 
     /**
@@ -49,6 +60,24 @@ public class AirportSecurity
 	String temp = currentState.getResponse();
 	return temp;
     }
+
+    /**
+     *calculates average traffic per days
+     *@return the average traffic per day
+     **/
+    private double getAvgTrafficPerDay(){
+	return (double) ( noOfTravellers/numberOfDays );
+    }
+
+    /**
+     *calculates the average prohibitted items per day
+     *@return the average prohibited items per days
+     **/
+    private double getAvgPrbItemsPerDay(){
+	return (double) ( prbItemsCount/numberOfDays );
+    }
+
+    
 
     //------------------------------------------
     // getter methods for states
