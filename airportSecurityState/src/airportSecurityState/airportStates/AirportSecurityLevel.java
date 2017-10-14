@@ -21,25 +21,21 @@ public class AirportSecurityLevel
      *@param the size of all the operations
      **/
     private void setLowAndHighRiskOperations(int size){
-	String allOperations = new String[size];
 	lowRiskOperations = new String[5];
 	highRiskOperations = new String[5];	
 	int count1=0;
 	int count2=0;
 	//----------------------------------------
 	for(int i=0;i<size;i++){
-	    allOperations[i]=i+1;
-	}
-	//----------------------------------------
-	for(int i=0;i<size;i++){
 	    if(i%2==0){
-		this.lowRiskOperations[count1]=allOperations[i];
+		this.lowRiskOperations[count1]=i;
 		count1++;
 	    }else{
-		this.highRiskOperations[count2]=allOperations[i];
+		this.highRiskOperations[count2]=i;
 		count2++;
-	    }	    
+	    }
 	}
+	//----------------------------------------
     }
 
     /**
