@@ -7,6 +7,9 @@ import airportSecurityState.AirportSecurityLevel;
 public class LowRiskState implements AirportStateInterface
 {
     private String operations;//the operations for Low risk state
-    private AirportSecurityLevel AirportSecurityState;
+    private AirportSecurityLevel airportSecurityState;
+
+
+    
     
 }
