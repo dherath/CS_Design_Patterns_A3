@@ -31,7 +31,8 @@ public class AirportSecurity
 	this.setLowAndHighRiskOperations(10);
 	this.setModerateRiskOperations();
 	numberOfDays = 0;
-	currentDay = 0;
+	previousDay = 0;
+	prevTimeStamp = 0;
 	prbItemsCount = 0;
 	noOfTravellers = 0;
 	//---------------------------------------
