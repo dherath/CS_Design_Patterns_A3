@@ -1,7 +1,7 @@
-package studentCoursesBackup.util;
+package airportSecurityState.util;
 
-import studentCoursesBackup.util.FileDisplayInterface;
-import studentCoursesBackup.util.StdoutDisplayInterface;
+import airportSecurityState.util.FileDisplayInterface;
+import airportSecurityState.util.StdoutDisplayInterface;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;

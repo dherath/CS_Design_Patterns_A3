@@ -1,4 +1,4 @@
-<project name="myArrayList" default="compile_all" basedir="..">
+<project name="airportSecurityState" default="compile_all" basedir="..">
 
   <property name="BUILD.compiler"       value="modern"/>
   <property name="src"                  value="src"/>
@@ -9,7 +9,7 @@
   <target name="all" depends="compile_all"/>
 
   <target name="compile_all"
-          depends="myArrayList"/>
+          depends="airportSecurityState"/>
 
   <target name="clean">
        <delete dir="${BUILD}"/>
@@ -24,9 +24,9 @@
 
  <target name="jar">
         <mkdir dir="${BUILD}/jar"/>
-        <jar destfile="${BUILD}/jar/myArrayList.jar" basedir="${BUILD}/classes">
+        <jar destfile="${BUILD}/jar/airportSecurityState.jar" basedir="${BUILD}/classes">
             <manifest>
-                <attribute name="Main-Class" value="myArrayList.driver.Driver"/>
+                <attribute name="Main-Class" value="airportSecurityState.driver.Driver"/>
             </manifest>
         </jar>
     </target>
@@ -37,9 +37,9 @@
   <!-- * means all files in the current directory -->
   <!-- for just java files use *.java -->
 
-  <target name="myArrayList" depends="prepare">
+  <target name="airportSecurityState" depends="prepare">
     <javac srcdir="${src}"
-           includes="myArrayList/**"
+           includes="airportSecurityState/**"
            excludes="**/package.html"
            destdir="${classes}"
            classpath="${classes}"
@@ -50,7 +50,7 @@
 
 
 <target name="run" depends="jar">
-        <java jar="${BUILD}/jar/myArrayList.jar"  fork="true">
+        <java jar="${BUILD}/jar/airportSecurityState.jar"  fork="true">
 		<arg value="${arg0}"/>
 		<arg value="${arg1}"/>
 		<arg value="${arg2}"/>
