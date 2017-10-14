@@ -41,7 +41,7 @@ public class HighRiskState implements AirportStateInterface
     public String getResponse(){
 	String temp = "";
 	for(int i=0;i<operations.length-1;i++){
-	    temp += operations[i];
+	    temp += operations[i]+" ";
 	}
 	temp += operations[operations.length-1] + "\n";
 	return temp;
