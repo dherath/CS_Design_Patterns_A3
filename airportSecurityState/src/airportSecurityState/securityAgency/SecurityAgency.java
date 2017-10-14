@@ -23,6 +23,26 @@ public class AirportSecurityAgency
 	return lowRiskOperations;
     }
     
+
+    /**
+     *getter for moderate risk operations
+     *@return the string operations for moderate risk
+     **/
+    public String[] getModerateRiskOperations(){
+	return moderateRiskOperations;
+    }
+
+    
+    /**
+     *getter for high risk operations
+     *@return the string operations for high risk
+     **/
+    public String[] getHighRiskOperations(){
+	return highRiskOperations;
+    }
+    
+    
+    
     //-------------------------------------------
     // Helper functions
     //--------------------------------------------
