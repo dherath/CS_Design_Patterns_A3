@@ -1,11 +1,11 @@
-package airportSecurityState.securityAgency;
+package airportSecurityState.airportSecurity;
 
 import airportSecurityState.airportStates.AirportStateInterface;
 import airportSecurityState.airportStates.LowRiskState;
 import airportSecurityState.airportStates.ModerateRiskState;
 import airportSecurityState.airportStates.HighRiskState;
 
-public class AirportSecurityAgency
+public class AirportSecurity
 {
     //-------- operations ----------------------
     private String[] lowRiskOperations;
@@ -17,8 +17,10 @@ public class AirportSecurityAgency
     private AirportStateInterface moderateRiskState;
     private AirportStateInterface highRiskState;
     
-
-    public AirportSecurityAgency(){
+    /**
+     *Constructor
+     **/
+    public AirportSecurity(){
 	//---------------------------------------
 	this.setLowAndHighRiskOperations(10);
 	this.setModerateRiskOperations();
@@ -28,9 +30,11 @@ public class AirportSecurityAgency
 	highRiskState = new HighRiskState(this);
 
 	currentState = lowRiskState; //intiitally it is assumed that the airport is at low risk
-	//---------------------------------------
     }
 
+    //-------------------------------------------
+    // getter methods for Operations
+    //-------------------------------------------
     /**
      *getter for low risk operations
      *@return the string operations for low risk
@@ -56,11 +60,20 @@ public class AirportSecurityAgency
     public String[] getHighRiskOperations(){
 	return highRiskOperations;
     }
+
+    //------------------------------------------
+    // getter methods for states
+    //------------------------------------------
     
+
+
+    //-----------------------------------------
+    // setter methods for states
+    //-----------------------------------------
     
     
     //-------------------------------------------
-    // Helper functions
+    // private  Helper functions
     //--------------------------------------------
 
     

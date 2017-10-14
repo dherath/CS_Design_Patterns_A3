@@ -1,22 +1,27 @@
 package airportSecurityState.airportStates;
 
-import airportSecurityState.securityAgency.AirportSecurityAgency;
+import airportSecurityState.airportSecurity.AirportSecurity;
 
 public class LowRiskState implements AirportStateInterface
 {
     private String operations;//the operations for Low risk state
-    private AirportSecurityAgency securityAgency;
+    private AirportSecurity airportSecurity;
+
 
     /**
      *Constructor
      *@param the airport security agency
      **/
-    public LowRiskState(AirportSecurityAgency securityAgency){
-	this.securityAgency = securityAgency;
-	this.operations = securityAgency.getLowRiskOperations();
+    public LowRiskState(AirportSecurity airportSecurity){
+	this.airportSecurity = airportSecurity;
+	this.operations = airportSecurity.getLowRiskOperations();
     }
 
+    //-------------- Sttae INterface Implementations -------------
 
+    public void tightenOrLoosenSecurity(double avgTraffic, double avgProhibtedItems){
+	
+    }
     
     
     
