@@ -1,4 +1,4 @@
-package airportSecurityState.
+package airportSecurityState.airportStates;
 
 public interface AirportStateInterface{
     void tightenOrLoosenSecurity(double avgTraffic, double avgProhibtedItems);//per day
