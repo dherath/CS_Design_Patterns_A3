@@ -1,7 +1,7 @@
 package airportSecurityState.airportStates;
 
 import airportSecurityState.AirportStateInterface;
-import airportSecurityState.AirportSecurityLevel;
+
 
 
 public class LowRiskState implements AirportStateInterface
@@ -10,6 +10,7 @@ public class LowRiskState implements AirportStateInterface
     private AirportSecurityLevel airportSecurityState;
 
 
+    
     
     
 }

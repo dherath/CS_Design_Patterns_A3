@@ -1,21 +1,37 @@
-package airportSecurityState.airportStates;
+package airportSecurityState.securityAgency;
 
 
-public class AirportSecurityLevel
+public class AirportSecurityAgency
 {
     private String[] lowRiskOperations;
     private String[] moderateRiskOperations;
     private String[] highRiskOperations;
     
 
-    public AirportSecurityLevel(){
+    public AirportSecurityAgency(){
 	//---------------------------------------
 	this.setLowAndHighRiskOperations(10);
 	this.setModerateRiskOperations();
 	//---------------------------------------
     }
 
+    /**
+     *getter for low risk operations
+     *@return the string operations for low risk
+     **/
+    public String[] getLowRiskOperations(){
+	return lowRiskOperations;
+    }
+    
+    //-------------------------------------------
+    // Helper functions
     //--------------------------------------------
+
+    
+    //the agency determines what actions to take depending on the state
+    //therefore inorder to ensure that each state is closed for modification
+    //the operation Ids themselves where set here
+    
     /**
      *helper function that sets operations for Low Risk & HIgh Risk
      *@param the size of all the operations
@@ -35,7 +51,6 @@ public class AirportSecurityLevel
 		count2++;
 	    }
 	}
-	//----------------------------------------
     }
 
     /**
