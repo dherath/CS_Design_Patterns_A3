@@ -41,6 +41,8 @@ public class AirportSecurity
 	currentState.tightenOrLoosenSecurity(avgTraffic,avgProhibtedItems);
     }
 
+    
+
     //-------------------------------------------
     // getter methods for Operations
     //-------------------------------------------

@@ -24,8 +24,13 @@ public class LowRiskState implements AirportStateInterface
      *@param avgProhibteditems, the average Prohibited items per day
      **/
     public void tightenOrLoosenSecurity(double avgTraffic, double avgProhibtedItems){
-	if(avgTraffic >=4 || avgProhibtedItems >=1 ){
-	    
+	if(avgTraffic >= 4.0 || avgProhibtedItems >= 1.0 ){
+	    if(avgTraffic < 8.0 || avgProhibtedItems < 2.0){
+		airportSecurity.setState(airportSecurity.getModerateRiskState());
+	    }
+	    if(avgTraffic >= 8 || avgProhibtedItems >= 2 ){
+		airportSecurity.setState(airportSecurity.getHighRiskState());
+	    }
 	}
     }
     
