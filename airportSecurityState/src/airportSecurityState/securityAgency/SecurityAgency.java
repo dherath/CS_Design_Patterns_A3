@@ -1,11 +1,21 @@
 package airportSecurityState.securityAgency;
 
+import airportSecurityState.airportStates.AirportStateInterface;
+import airportSecurityState.airportStates.LowRiskState;
+import airportSecurityState.airportStates.ModerateRiskState;
+import airportSecurityState.airportStates.HighRiskState;
 
 public class AirportSecurityAgency
 {
+    //-------- operations ----------------------
     private String[] lowRiskOperations;
     private String[] moderateRiskOperations;
     private String[] highRiskOperations;
+    //------- states ---------------------------
+    private AirportStateInterface currentState;
+    private AirportStateInterface lowRiskState;
+    private AirportStateInterface moderateRiskState;
+    private AirportStateInterface highRiskState;
     
 
     public AirportSecurityAgency(){
