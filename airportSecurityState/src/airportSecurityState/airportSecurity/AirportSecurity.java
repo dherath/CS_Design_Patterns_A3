@@ -61,7 +61,7 @@ public class AirportSecurity
 		updateParameters(data[0],data[1],data[2]);//updates parameters, throws exceptions
 		double avgTraffic = getAvgTrafficPerDay();
 		double avgPrbItems = getAvgPrbItemsPerDay();
-		//System.out.println(" avg traffic : "+avgTraffic+"avg prb items "+avgPrbItems+" noOfdays: "+numberOfDays+" total traffic: "+noOfTravellers+" total prb items "+ prbItemsCount);
+		System.out.println(" avg traffic : "+avgTraffic+"avg prb items "+avgPrbItems+" noOfdays: "+numberOfDays+" total traffic: "+noOfTravellers+" total prb items "+ prbItemsCount);
 		tightenOrLoosenSecurity(avgTraffic,avgPrbItems);
 		result += getResponse();
 		line = inputFile.readLine();
@@ -208,10 +208,10 @@ public class AirportSecurity
 	//----------------------------------------
 	for(int i=0;i<size;i++){
 	    if(i%2==0){
-		lowRiskOperations[count1]=i+2;
+		highRiskOperations[count1]=i+2;
 		count1++;
 	    }else{
-		highRiskOperations[count2]=i;
+		lowRiskOperations[count2]=i;
 		count2++;
 	    }
 	}
