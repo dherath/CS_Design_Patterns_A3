@@ -46,22 +46,25 @@ public class AirportSecurity
 	prbItems = new String[]{"Gun","NailCutter","Blade","Knife"};
 	//---------------------------------------
 	lowRiskState = new LowRiskState(this);
+	//System.out.println("low risk response - "+lowRiskState.getResponse());
 	moderateRiskState = new ModerateRiskState(this);
+	//System.out.println("moderate risk response - "+moderateRiskState.getResponse());
 	highRiskState = new HighRiskState(this);
+	//System.out.println("high risk response - "+highRiskState.getResponse());
 	currentState = lowRiskState; //intiitally it is assumed that the airport is at low risk
 	//---------------------------------------
 	inputFile = new FileProcessor(inputFileName);
-	int flag = 0;
+	//int flag = 0;
 	try{
 	    line = inputFile.readLine();
 	    while(line != null){
-		flag++;
+		//flag++;
 		//System.out.println(line);
 		String[] data = preProcessLine(line);//throws runtime exceptions based on format
 		updateParameters(data[0],data[1],data[2]);//updates parameters, throws exceptions
 		double avgTraffic = getAvgTrafficPerDay();
 		double avgPrbItems = getAvgPrbItemsPerDay();
-		System.out.println(" avg traffic : "+avgTraffic+"avg prb items "+avgPrbItems+" noOfdays: "+numberOfDays+" total traffic: "+noOfTravellers+" total prb items "+ prbItemsCount);
+		//		System.out.println(" avg traffic : "+avgTraffic+"avg prb items "+avgPrbItems+" noOfdays: "+numberOfDays+" total traffic: "+noOfTravellers+" total prb items "+ prbItemsCount);
 		tightenOrLoosenSecurity(avgTraffic,avgPrbItems);
 		result += getResponse();
 		line = inputFile.readLine();
@@ -70,7 +73,7 @@ public class AirportSecurity
 	    e.printStackTrace();
 	    System.exit(1);
 	}finally{
-	    System.out.println(flag);
+	    //System.out.println(flag);
 	    inputFile.closeAll();
 	}	
     }
