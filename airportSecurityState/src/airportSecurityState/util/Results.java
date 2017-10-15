@@ -2,6 +2,7 @@ package airportSecurityState.util;
 
 import airportSecurityState.util.FileDisplayInterface;
 import airportSecurityState.util.StdoutDisplayInterface;
+import airportSecurityState.util.MyLogger;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -17,9 +18,10 @@ public class Results implements StdoutDisplayInterface, FileDisplayInterface
      *constructor
      *@param the name of the output file
      **/
-    public Results(String name){
+    public Results(String name,MyLogger loggerIn){
 	text = "";
 	this.outputFileName = name;
+	loggerIn.writeMessage("constructed Results class",4);
     }
     
     /**
