@@ -29,9 +29,11 @@ public class ModerateRiskState implements AirportStateInterface
     public void tightenOrLoosenSecurity(double avgTraffic, double avgProhibtedItems){
 	if( avgTraffic < 4.0 || avgProhibtedItems < 1.0 ){
 	    airportSecurity.setState(airportSecurity.getLowRiskState());
+	    logger.writeMessage("moderate risk state -> low risk state",3);
 	}
 	if( avgTraffic >= 8.0 || avgProhibtedItems >= 2.0){
 	    airportSecurity.setState(airportSecurity.getHighRiskState());
+	    logger.writeMessage("moderate risk state -> high risk state",3);
 	}
     }
 
