@@ -5,6 +5,7 @@ import airportSecurityState.airportStates.LowRiskState;
 import airportSecurityState.airportStates.ModerateRiskState;
 import airportSecurityState.airportStates.HighRiskState;
 import airportSecurityState.util.FileProcessor;
+import airportSecurityState.util.MyLogger;
 
 public class AirportSecurity
 {
@@ -28,12 +29,13 @@ public class AirportSecurity
     private FileProcessor inputFile;// input file
     private String line;//a single line read from input file
     private String result;// final result for output
+    private MyLogger logger;
 
     
     /**
      *Constructor
      **/
-    public AirportSecurity(String inputFileName){
+    public AirportSecurity(String inputFileName,MyLogger loggerIn){
 	//---------------------------------------
 	setLowAndHighRiskOperations(10);
 	setModerateRiskOperations();
@@ -44,12 +46,14 @@ public class AirportSecurity
 	noOfTravellers = 0;
 	result = "";
 	prbItems = new String[]{"Gun","NailCutter","Blade","Knife"};
+	logger = loggerIn;
+	logger.writeMessage("constructed AirportSecurity class",4);
 	//---------------------------------------
-	lowRiskState = new LowRiskState(this);
+	lowRiskState = new LowRiskState(this,logger);
 	//System.out.println("low risk response - "+lowRiskState.getResponse());
-	moderateRiskState = new ModerateRiskState(this);
+	moderateRiskState = new ModerateRiskState(this,logger);
 	//System.out.println("moderate risk response - "+moderateRiskState.getResponse());
-	highRiskState = new HighRiskState(this);
+	highRiskState = new HighRiskState(this,logger);
 	//System.out.println("high risk response - "+highRiskState.getResponse());
 	currentState = lowRiskState; //intiitally it is assumed that the airport is at low risk
 	//---------------------------------------

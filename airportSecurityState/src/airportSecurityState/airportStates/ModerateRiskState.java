@@ -1,20 +1,23 @@
 package airportSecurityState.airportStates;
 
 import airportSecurityState.airportSecurity.AirportSecurity;
+import airportSecurityState.util.MyLogger;
 
 public class ModerateRiskState implements AirportStateInterface
 {
     private int[] operations;//the operations for moderate risk state
     private AirportSecurity airportSecurity;
-
+    private MyLogger logger;
 
     /**
      *Constructor
      *@param the airport security 
      **/
-    public ModerateRiskState(AirportSecurity airportSecurity){
+    public ModerateRiskState(AirportSecurity airportSecurity,MyLogger loggerIn){
 	this.airportSecurity = airportSecurity;
 	this.operations = airportSecurity.getModerateRiskOperations();
+	this.logger = loggerIn;
+	logger.writeMessage("constructed ModerateRiskState class",4);
     }
 
     //-------------- state Interface Implementations -------------
