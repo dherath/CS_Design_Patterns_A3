@@ -69,6 +69,8 @@ public class AirportSecurity
 		double avgTraffic = getAvgTrafficPerDay();
 		double avgPrbItems = getAvgPrbItemsPerDay();
 		//System.out.println(" avg traffic : "+avgTraffic+" avg prb items "+avgPrbItems+" noOfdays: "+numberOfDays+" total traffic: "+noOfTravellers+" total prb items "+ prbItemsCount);
+		String loggerMessage = "average Traffic per Day: "+avgTraffic+" average prohibitted iterms per Day: "+avgPrbItems;
+		logger.writeMessage(loggerMessage,2);
 		tightenOrLoosenSecurity(avgTraffic,avgPrbItems);
 		result += getResponse();
 		line = inputFile.readLine();
