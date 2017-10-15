@@ -1,6 +1,7 @@
 package airportSecurityState.airportStates;
 
 import airportSecurityState.airportSecurity.AirportSecurity;
+import airportSecurityState.util.MyLogger;
 
 public class HighRiskState implements AirportStateInterface
 {

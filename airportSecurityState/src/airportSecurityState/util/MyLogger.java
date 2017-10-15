@@ -1,5 +1,7 @@
 package airportSecurityState.util;
 
+import airportSecurityState.util.Results;
+
 public class MyLogger{
 
     /*DEBUG_VALUE=4 [Print to stdout everytime a constructor is called]
@@ -13,8 +15,20 @@ public class MyLogger{
     };
 
     private static DebugLevel debugLevel;
+    private static Results output;// reference to results
 
+    /**
+     *Constructor
+     *@param the instance of results used
+     **/
+    public MyLogger(Results rIn){
+	output = rIn;
+    }
 
+    /**
+     *defines the debug level
+     *@param the debug level
+     **/
     public static void setDebugValue (int levelIn) {
 	switch (levelIn){
 	case 4: debugLevel = DebugLevel.CONSTRUCTOR; break;
@@ -25,14 +39,23 @@ public class MyLogger{
 	}
     }
 
+    /**
+     *sets the debug level
+     *@param the debug level 
+     **/
     public static void setDebugValue (DebugLevel levelIn) {
 	debugLevel = levelIn;
     }
 
     // @return None
+    /**
+     *writes thespecified message
+     *@param message, the string message
+     *@param levelIn, the debug level
+     **/
     public static void writeMessage (String message, DebugLevel levelIn ) {
 	if (levelIn == debugLevel)
-	    System.out.println(message);
+	    output.writeToStdout(message);
     }
 
     /**
