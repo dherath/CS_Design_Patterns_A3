@@ -15,6 +15,7 @@ public class LowRiskState implements AirportStateInterface
     public LowRiskState(AirportSecurity airportSecurity){
 	this.airportSecurity = airportSecurity;
 	this.operations = airportSecurity.getLowRiskOperations();
+	//	System.out.println("created low risk state");
     }
 
     //-------------- state Interface Implementations -------------
