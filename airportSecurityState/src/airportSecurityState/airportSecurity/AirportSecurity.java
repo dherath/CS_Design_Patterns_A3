@@ -54,7 +54,7 @@ public class AirportSecurity
 	try{
 	    line = inputFile.readLine();
 	    while(line != null){
-		System.out.println(line);
+		//System.out.println(line);
 		String[] data = preProcessLine(line);//throws runtime exceptions based on format
 		updateParameters(data[0],data[1],data[2]);//updates parameters, throws exceptions 
 		tightenOrLoosenSecurity(getAvgTrafficPerDay(),getAvgPrbItemsPerDay());
@@ -202,7 +202,7 @@ public class AirportSecurity
 	//----------------------------------------
 	for(int i=0;i<size;i++){
 	    if(i%2==0){
-		lowRiskOperations[count1]=i;
+		lowRiskOperations[count1]=i+2;
 		count1++;
 	    }else{
 		highRiskOperations[count2]=i;
@@ -301,7 +301,7 @@ public class AirportSecurity
 		throw new RuntimeException("Invalid input format: Minutes cannot exceed 60");
 	    }
 	    int time = h*60 + m ;
-	    System.out.println("previous time : "+prevTimeStamp+" current time: "+time);
+	    // System.out.println("previous time : "+prevTimeStamp+" current time: "+time);
 	    if(currentDay == previousDay){
 		if(prevTimeStamp <= time){
 		    noOfTravellers++;
