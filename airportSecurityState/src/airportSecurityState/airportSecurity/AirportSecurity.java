@@ -288,6 +288,12 @@ public class AirportSecurity
 	if(isNumber(hour) && isNumber(min)){
 	    int h = convertToInt(hour);
 	    int m = convertToInt(min);
+	    if(h>24){
+		throw new RuntimeException("Invalid input format: Hours cannot exceed 24");
+	    }
+	    if(m>60){
+		throw new RuntimeException("Invalid input format: Minutes cannot exceed 60");
+	    }
 	    int time = h*60 + m ;
 	    if(currentDay == previousDay){
 		if(prevTimeStamp <= time){
