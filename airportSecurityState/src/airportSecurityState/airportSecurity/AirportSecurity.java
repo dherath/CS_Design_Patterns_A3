@@ -27,6 +27,7 @@ public class AirportSecurity
     //------------------------------------------
     private FileProcessor inputFile;// input file
     private String line;//a single line read from input file
+    private String result;// final result for output
 
     
     /**
@@ -34,13 +35,14 @@ public class AirportSecurity
      **/
     public AirportSecurity(String inputFileName){
 	//---------------------------------------
-	this.setLowAndHighRiskOperations(10);
-	this.setModerateRiskOperations();
+	setLowAndHighRiskOperations(10);
+	setModerateRiskOperations();
 	numberOfDays = 0;
 	previousDay = 0;
 	prevTimeStamp = 0;
 	prbItemsCount = 0;
 	noOfTravellers = 0;
+	result = "";
 	prbItems = new String[]{"Gun","NailCutter","Blade","Knife"};
 	//---------------------------------------
 	lowRiskState = new LowRiskState(this);
@@ -51,8 +53,13 @@ public class AirportSecurity
 	inputFile = new FileProcessor(inputFileName);
 	try{
 	    line = inputFile.readLine();
-	    String[] data = preProcessLine(line);
-	    
+	    while(line != null){
+		String[] data = preProcessLine(line);//throws runtime exceptions based on format
+		updateParameters(data[0],data[1],data[2]);//updates parameters, throws exceptions 
+		tightenOrLoosenSecurity(getAvgTrafficPerDay(),getAvgPrbItemsPerDay());
+		result += getResponse();
+		line = inputFile.readLine();
+	    }	    
 	}catch(RuntimeException e){
 	    e.printStackTrace();
 	    System.exit(1);
@@ -146,7 +153,7 @@ public class AirportSecurity
      *@return the operations for low risk
      **/
     public int[] getLowRiskOperations(){
-    return lowRiskOperations;
+	return lowRiskOperations;
     }
     
 
@@ -155,7 +162,7 @@ public class AirportSecurity
      *@return the operations for moderate risk
      **/
     public int[] getModerateRiskOperations(){
-    return moderateRiskOperations;
+	return moderateRiskOperations;
     }
 
     
@@ -164,7 +171,7 @@ public class AirportSecurity
      *@return the operations for high risk
      **/
     public int[] getHighRiskOperations(){
-    return highRiskOperations;
+	return highRiskOperations;
     }
     
     //-------------------------------------------
@@ -246,6 +253,92 @@ public class AirportSecurity
 	temp[1] = input.substring((index[0]+1),index[1]);//TOD
 	temp[2] = input.substring((index[2]+1),input.length());//item
 	return temp;
+    }
+
+    /**
+     *updates parameters of no of travellers, days and prohibitted items
+     *@param s1, preprocessed string with Day info
+     *@param s2, preprocessed string with TOD info
+     *@param s3, preprocessed string with item info
+     **/
+    private void updateParameters(String s1, String s2, String s3){
+	int currentDay = previousDay;
+	//-------------update number of days -------------------------------
+	String value = s1.substring(4,s1.length());
+	if(isNumber(value)){
+	    currentDay = convertToInt(value);
+	    if(previousDay < currentDay){
+		previousDay = currentDay;
+		numberOfDays++;
+	    }else if(previousDay > currentDay){
+		throw new RuntimeException("invalid format in input text : The days need to be in order");
+	    }
+	}else{
+	    throw new RuntimeException("invalid input for text file: Day can only have numeric values");
+	}
+	//-----------update no of travellers ------------------------------
+	String hour = s2.substring(4,6);
+	String min = s2.substring(7,9);
+	if(isNumber(hour) && isNumber(min)){
+	    int h = convertToInt(hour);
+	    int m = convertToInt(min);
+	    int time = h*60 + m ;
+	    if(currentDay == previousDay){
+		if(prevTimeStamp <= time){
+		    noOfTravellers++;
+		    prevTimeStamp = time;
+		}else{
+		    throw new RuntimeException("Invalid input format: time entries cannot decrease in value for the same day");
+		}
+	    }else{
+		noOfTravellers++;
+		prevTimeStamp = time;
+	    }
+	}else{
+	    throw new RuntimeException("Invalid format in text file: hour/minutes must be numbers");
+	}
+	//-----------update no of prohibitted items -----------------------
+	String item = s3.substring(5,s3.length());
+	for(int i = 0; i < prbItems.length ; i++){
+	    if(prbItems[i].toLowerCase().equals(item.toLowerCase())){
+		prbItemsCount++;
+	    }
+	}
+	
+    }
+    
+    /**
+     *Converts the string input to an Int
+     *@param sIn the String input which is a number
+     *@return the number in Int format
+     **/
+    private int convertToInt(String sIn){
+	int number=0;
+	for(int i=0;i<sIn.length();i++){
+	    number = number*10+sIn.charAt(i)-'0';
+	}
+	return number;
+    }
+
+    /**
+     *finds if chars in a string are numeric values
+     *@param sIn, the string
+     *@return true if a number, else false
+     **/
+    private boolean isNumber(String sIn){
+	String temp = "0123456789";
+	int count = 0;
+	for(int i=0;i<sIn.length();i++){
+	    for(int j=0;j<temp.length();j++){
+		if(sIn.charAt(i)==temp.charAt(j)){
+		    count++;
+		}
+	    }
+	}
+	if(count != sIn.length()){
+	    return false;
+	}
+	return true;
     }
     
 }
