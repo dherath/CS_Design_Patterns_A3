@@ -102,7 +102,13 @@ public class AirportSecurity
 	return (double) ( prbItemsCount/numberOfDays );
     }
 
-    
+    /**
+     *returns the results stored
+     *@return the results
+     **/
+    public String getResults(){
+	return result;
+    }
 
     //------------------------------------------
     // getter methods for states
