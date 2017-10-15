@@ -50,6 +50,8 @@ public class AirportSecurity
 	//---------------------------------------
 	inputFile = new FileProcessor(inputFileName);
 	try{
+	    line = inputFile.readLine();
+	    String[] data = preProcessLine(line);
 	    
 	}catch(RuntimeException e){
 	    e.printStackTrace();
@@ -200,6 +202,50 @@ public class AirportSecurity
      **/
     private void setModerateRiskOperations(){
 	moderateRiskOperations = new int[]{2,3,5,8,9};
+    }
+
+    /**
+     *preprocessline into subsections
+     *@param input, the read line from file
+     *@return the String array with information
+     **/
+    private String[] preProcessLine(String input){
+	String[] temp = new String[4];
+	int[] index = new int[3];//index of semicolon in line
+	String[] labels = new String[4];
+	String[] list = {"Day","TOD","Airline","Item"};
+	int count = 0;
+	if(input.trim().length()==0){
+	    throw new RuntimeException("Invalid format in text file: empty line");
+	}
+	//-------to find indices---------------
+	for(int i=0;i<input.length();i++){
+	    if(input.charAt(i)==';'){
+		index[count]=i;
+		count++;
+	    }
+	    if(count>3){
+		throw new RuntimeException("Invalid format in text file");
+	    }
+	}
+	//------ check label format------------
+	labels[0] = input.substring(0,3);//Day
+	labels[1] = input.substring(index[0]+1,index[0]+4);//TOD
+	labels[2] = input.substring(index[1]+1,index[1]+8);//Airline
+	labels[4] = input.substring(index[2]+1,index[2]+5);//Item
+	count = 0;
+	for(int i=0;i<4;i++){
+	    if(labels[i].equals(list[0])){
+		count++;
+	    }
+	}
+	if(count != 4){
+	    throw new RuntimeException("Invalid format in text file: incorrect label format");
+	}
+	temp[0] = input.substring(0,index[0]);//day
+	temp[1] = input.substring((index[0]+1),index[1]);//TOD
+	temp[2] = input.substring((index[2]+1),input.length());//item
+	return temp;
     }
     
 }
