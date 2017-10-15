@@ -290,6 +290,7 @@ public class AirportSecurity
      **/
     private void updateParameters(String s1, String s2, String s3){
 	int currentDay = previousDay;
+	String loggerMessage = "";
 	//-------------update number of days -------------------------------
 	String value = s1.substring(4,s1.length());
 	if(isNumber(value)){
@@ -303,6 +304,7 @@ public class AirportSecurity
 	}else{
 	    throw new RuntimeException("invalid input for text file: Day can only have numeric values");
 	}
+	loggerMessage += "No.of days: "+numberOfDays+" ";
 	//-----------update no of travellers ------------------------------
 	String hour = s2.substring(4,6);
 	String min = s2.substring(7,9);
@@ -332,6 +334,7 @@ public class AirportSecurity
 	}else{
 	    throw new RuntimeException("Invalid format in text file: hour/minutes must be numbers");
 	}
+	loggerMessage += "No.of Travellers: "+noOfTravellers+" ";
 	//-----------update no of prohibitted items -----------------------
 	String item = s3.substring(5,s3.length());
 	for(int i = 0; i < prbItems.length ; i++){
@@ -339,7 +342,8 @@ public class AirportSecurity
 		prbItemsCount++;
 	    }
 	}
-	
+	loggerMessage += "No.of prohibitted Items: "+prbItemsCount;
+	logger.writeMessage(loggerMessage,1);
     }
     
     /**
