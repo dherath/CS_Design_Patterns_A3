@@ -54,6 +54,7 @@ public class AirportSecurity
 	try{
 	    line = inputFile.readLine();
 	    while(line != null){
+		System.out.println(line);
 		String[] data = preProcessLine(line);//throws runtime exceptions based on format
 		updateParameters(data[0],data[1],data[2]);//updates parameters, throws exceptions 
 		tightenOrLoosenSecurity(getAvgTrafficPerDay(),getAvgPrbItemsPerDay());
@@ -279,7 +280,7 @@ public class AirportSecurity
 	if(isNumber(value)){
 	    currentDay = convertToInt(value);
 	    if(previousDay < currentDay){
-		previousDay = currentDay;
+		//previousDay = currentDay;
 		numberOfDays++;
 	    }else if(previousDay > currentDay){
 		throw new RuntimeException("invalid format in input text : The days need to be in order");
@@ -300,6 +301,7 @@ public class AirportSecurity
 		throw new RuntimeException("Invalid input format: Minutes cannot exceed 60");
 	    }
 	    int time = h*60 + m ;
+	    System.out.println("previous time : "+prevTimeStamp+" current time: "+time);
 	    if(currentDay == previousDay){
 		if(prevTimeStamp <= time){
 		    noOfTravellers++;
@@ -311,6 +313,7 @@ public class AirportSecurity
 		noOfTravellers++;
 		prevTimeStamp = time;
 	    }
+	    previousDay = currentDay ; //update previous day flag
 	}else{
 	    throw new RuntimeException("Invalid format in text file: hour/minutes must be numbers");
 	}
