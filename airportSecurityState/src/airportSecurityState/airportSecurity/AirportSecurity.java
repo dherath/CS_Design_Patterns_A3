@@ -51,13 +51,18 @@ public class AirportSecurity
 	currentState = lowRiskState; //intiitally it is assumed that the airport is at low risk
 	//---------------------------------------
 	inputFile = new FileProcessor(inputFileName);
+	int flag = 0;
 	try{
 	    line = inputFile.readLine();
 	    while(line != null){
+		flag++;
 		//System.out.println(line);
 		String[] data = preProcessLine(line);//throws runtime exceptions based on format
-		updateParameters(data[0],data[1],data[2]);//updates parameters, throws exceptions 
-		tightenOrLoosenSecurity(getAvgTrafficPerDay(),getAvgPrbItemsPerDay());
+		updateParameters(data[0],data[1],data[2]);//updates parameters, throws exceptions
+		double avgTraffic = getAvgTrafficPerDay();
+		double avgPrbItems = getAvgPrbItemsPerDay();
+		//System.out.println(" avg traffic : "+avgTraffic+"avg prb items "+avgPrbItems+" noOfdays: "+numberOfDays+" total traffic: "+noOfTravellers+" total prb items "+ prbItemsCount);
+		tightenOrLoosenSecurity(avgTraffic,avgPrbItems);
 		result += getResponse();
 		line = inputFile.readLine();
 	    }	    
@@ -65,6 +70,7 @@ public class AirportSecurity
 	    e.printStackTrace();
 	    System.exit(1);
 	}finally{
+	    System.out.println(flag);
 	    inputFile.closeAll();
 	}	
     }
@@ -92,7 +98,7 @@ public class AirportSecurity
      *@return the average traffic per day
      **/
     private double getAvgTrafficPerDay(){
-	return (double) ( noOfTravellers/numberOfDays );
+	return  ((double) noOfTravellers)/((double) numberOfDays );
     }
 
     /**
@@ -100,7 +106,7 @@ public class AirportSecurity
      *@return the average prohibited items per days
      **/
     private double getAvgPrbItemsPerDay(){
-	return (double) ( prbItemsCount/numberOfDays );
+	return ((double) prbItemsCount)/((double) numberOfDays );
     }
 
     /**
