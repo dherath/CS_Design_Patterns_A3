@@ -27,15 +27,21 @@ public class HighRiskState implements AirportStateInterface
      *@param avgProhibteditems, the average Prohibited items per day
      **/
     public void tightenOrLoosenSecurity(double avgTraffic, double avgProhibtedItems){
+	int flag = 0;
 	if( avgTraffic < 8.0 || avgProhibtedItems < 2.0){
 	    if( avgTraffic < 4.0 || avgProhibtedItems < 1.0){
 		airportSecurity.setState(airportSecurity.getLowRiskState());
-		logger.writeMessage("high risk state -> low risk state",logger.converToDebugVal(3));
+		flag = 1;
 	    }
 	    if( avgTraffic >= 4.0 || avgProhibtedItems >= 1.0 ){
 		airportSecurity.setState(airportSecurity.getModerateRiskState());
-		logger.writeMessage("high risk state -> moderate risk state",logger.converToDebugVal(3));
+		flag = 2;
 	    }
+	}
+	if(flag==1){
+	    logger.writeMessage("high risk state -> low risk state",logger.converToDebugVal(3));	    
+	}else if(flag==2){
+	    logger.writeMessage("high risk state -> moderate risk state",logger.converToDebugVal(3));
 	}
     }
 
