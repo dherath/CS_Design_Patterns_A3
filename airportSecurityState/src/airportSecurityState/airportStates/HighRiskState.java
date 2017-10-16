@@ -17,7 +17,7 @@ public class HighRiskState implements AirportStateInterface
 	this.airportSecurity = airportSecurity;
 	this.operations = airportSecurity.getHighRiskOperations();
 	this.logger = loggerIn;
-	logger.writeMessage("constructed HighRiskstate class",4);
+	logger.writeMessage("constructed HighRiskstate class",logger.converToDebugVal(4));
     }
 
     //-------------- state Interface Implementations -------------
@@ -30,11 +30,11 @@ public class HighRiskState implements AirportStateInterface
 	if( avgTraffic < 8.0 || avgProhibtedItems < 2.0){
 	    if( avgTraffic < 4.0 || avgProhibtedItems < 1.0){
 		airportSecurity.setState(airportSecurity.getLowRiskState());
-		logger.writeMessage("high risk state -> low risk state",3);
+		logger.writeMessage("high risk state -> low risk state",logger.converToDebugVal(3));
 	    }
 	    if( avgTraffic >= 4.0 || avgProhibtedItems >= 1.0 ){
 		airportSecurity.setState(airportSecurity.getModerateRiskState());
-		logger.writeMessage("high risk state -> moderate risk state",3);
+		logger.writeMessage("high risk state -> moderate risk state",logger.converToDebugVal(3));
 	    }
 	}
     }

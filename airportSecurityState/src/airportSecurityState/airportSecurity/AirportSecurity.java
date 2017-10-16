@@ -47,7 +47,7 @@ public class AirportSecurity
 	result = "";
 	prbItems = new String[]{"Gun","NailCutter","Blade","Knife"};
 	logger = loggerIn;
-	logger.writeMessage("constructed AirportSecurity class",4);
+	logger.writeMessage("constructed AirportSecurity class",logger.converToDebugVal(4));
 	//---------------------------------------
 	lowRiskState = new LowRiskState(this,logger);
 	//System.out.println("low risk response - "+lowRiskState.getResponse());
@@ -70,7 +70,7 @@ public class AirportSecurity
 		double avgPrbItems = getAvgPrbItemsPerDay();
 		//System.out.println(" avg traffic : "+avgTraffic+" avg prb items "+avgPrbItems+" noOfdays: "+numberOfDays+" total traffic: "+noOfTravellers+" total prb items "+ prbItemsCount);
 		String loggerMessage = "average Traffic per Day: "+avgTraffic+" average prohibitted iterms per Day: "+avgPrbItems;
-		logger.writeMessage(loggerMessage,2);
+		logger.writeMessage(loggerMessage,logger.converToDebugVal(2));
 		tightenOrLoosenSecurity(avgTraffic,avgPrbItems);
 		result += getResponse();
 		line = inputFile.readLine();
@@ -343,7 +343,7 @@ public class AirportSecurity
 	    }
 	}
 	loggerMessage += "No.of prohibitted Items: "+prbItemsCount;
-	logger.writeMessage(loggerMessage,1);
+	logger.writeMessage(loggerMessage,logger.converToDebugVal(1));
     }
     
     /**

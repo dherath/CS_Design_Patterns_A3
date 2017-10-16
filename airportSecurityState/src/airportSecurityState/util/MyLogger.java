@@ -59,6 +59,31 @@ public class MyLogger{
     }
 
     /**
+     *converts in level to debug value
+     *@param the numeric input level
+     *@return the debug level
+     **/
+    public static DebugLevel converToDebugVal(int levelIn){
+	DebugLevel temp = null;
+	try{
+	    if(levelIn >=5 || levelIn < 0){
+		throw new RuntimeException("Invalid myLogger level");
+	    }
+	    switch (levelIn){
+	    case 4: temp = DebugLevel.CONSTRUCTOR; break;
+	    case 3: temp = DebugLevel.STATE_CHANGE; break;
+	    case 2: temp = DebugLevel.PARAMETERS; break;
+	    case 1: temp = DebugLevel.INPUTS; break;
+	    case 0: temp = DebugLevel.RELEASE; break;
+	    }
+	}catch(RuntimeException e){
+	    e.printStackTrace();
+	    System.exit(3);
+	}finally{}
+	return temp;
+    }
+
+    /**
      * @return String
      */
     public String toString() {

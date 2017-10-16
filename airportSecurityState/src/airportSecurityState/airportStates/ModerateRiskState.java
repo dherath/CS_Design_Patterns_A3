@@ -17,7 +17,7 @@ public class ModerateRiskState implements AirportStateInterface
 	this.airportSecurity = airportSecurity;
 	this.operations = airportSecurity.getModerateRiskOperations();
 	this.logger = loggerIn;
-	logger.writeMessage("constructed ModerateRiskState class",4);
+	logger.writeMessage("constructed ModerateRiskState class",logger.converToDebugVal(4));
     }
 
     //-------------- state Interface Implementations -------------
@@ -29,11 +29,11 @@ public class ModerateRiskState implements AirportStateInterface
     public void tightenOrLoosenSecurity(double avgTraffic, double avgProhibtedItems){
 	if( avgTraffic < 4.0 || avgProhibtedItems < 1.0 ){
 	    airportSecurity.setState(airportSecurity.getLowRiskState());
-	    logger.writeMessage("moderate risk state -> low risk state",3);
+	    logger.writeMessage("moderate risk state -> low risk state",logger.converToDebugVal(3));
 	}
 	if( avgTraffic >= 8.0 || avgProhibtedItems >= 2.0){
 	    airportSecurity.setState(airportSecurity.getHighRiskState());
-	    logger.writeMessage("moderate risk state -> high risk state",3);
+	    logger.writeMessage("moderate risk state -> high risk state",logger.converToDebugVal(3));
 	}
     }
 
