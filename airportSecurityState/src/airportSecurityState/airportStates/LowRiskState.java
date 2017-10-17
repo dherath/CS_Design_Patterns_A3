@@ -24,11 +24,17 @@ public class LowRiskState implements AirportStateInterface
     //-------------- state Interface Implementations -------------
     /**
      *changes the state from low risk to moderate or high if needed
-     *@param avgTraffic, the average traffic per day
-     *@param avgProhibteditems, the average Prohibited items per day
+     *@param the parameters
      **/
-    public void tightenOrLoosenSecurity(double avgTraffic, double avgProhibtedItems){
+    public void tightenOrLoosenSecurity(int[] parameters){
 	int flag = 0;
+	int travelers = parameters[0];
+	int items = parameters[1];
+	int days = parameters[2];
+	double avgTraffic = getAvgTrafficPerDay(travelers,days);
+	double avgProhibtedItems = getAvgPrbItemsPerDay(items,days);
+	String loggerMessage = "average Traffic per Day: "+avgTraffic+" average prohibitted iterms per Day: "+avgProhibtedItems;
+	logger.writeMessage(loggerMessage,logger.converToDebugVal(2));	
 	if(avgTraffic >= 4.0 || avgProhibtedItems >= 1.0 ){
 	    if(avgTraffic < 8.0 || avgProhibtedItems < 2.0){
 		airportSecurity.setState(airportSecurity.getModerateRiskState());
@@ -58,7 +64,21 @@ public class LowRiskState implements AirportStateInterface
 	temp += operations[operations.length-1] + "\n";
 	return temp;
     }
-    
+    /**
+     *calculates average traffic per days
+     *@return the average traffic per day
+     **/
+    private double getAvgTrafficPerDay(int noOfTravellers, int numberOfDays){
+	return  ((double) noOfTravellers)/((double) numberOfDays );
+    }
+
+    /**
+     *calculates the average prohibitted items per day
+     *@return the average prohibited items per days
+     **/
+    private double getAvgPrbItemsPerDay(int prbItemsCount, int numberOfDays){
+	return ((double) prbItemsCount)/((double) numberOfDays );
+    }    
     
     
 }

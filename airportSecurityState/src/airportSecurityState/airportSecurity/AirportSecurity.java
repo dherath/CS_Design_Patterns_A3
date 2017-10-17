@@ -66,12 +66,12 @@ public class AirportSecurity
 		//System.out.println(line);
 		String[] data = preProcessLine(line);//throws runtime exceptions based on format
 		updateParameters(data[0],data[1],data[2]);//updates parameters, throws exceptions
-		double avgTraffic = getAvgTrafficPerDay();
-		double avgPrbItems = getAvgPrbItemsPerDay();
+		//	double avgTraffic = getAvgTrafficPerDay();
+		//double avgPrbItems = getAvgPrbItemsPerDay();
 		//System.out.println(" avg traffic : "+avgTraffic+" avg prb items "+avgPrbItems+" noOfdays: "+numberOfDays+" total traffic: "+noOfTravellers+" total prb items "+ prbItemsCount);
-		String loggerMessage = "average Traffic per Day: "+avgTraffic+" average prohibitted iterms per Day: "+avgPrbItems;
-		logger.writeMessage(loggerMessage,logger.converToDebugVal(2));
-		tightenOrLoosenSecurity(avgTraffic,avgPrbItems);
+		//String loggerMessage = "average Traffic per Day: "+avgTraffic+" average prohibitted iterms per Day: "+avgPrbItems;
+		//logger.writeMessage(loggerMessage,logger.converToDebugVal(2));
+		tightenOrLoosenSecurity(getAllParameters());
 		result += getResponse();
 		line = inputFile.readLine();
 	    }	    
@@ -86,11 +86,10 @@ public class AirportSecurity
 
     /**
      *computes changes to aiport security state
-     *@param avgTraffic, the average traffic per day
-     *@param avgProhibteditems, the average prohibitted items per day
+     *@param parameters, the updated parameters
      **/
-    public void tightenOrLoosenSecurity(double avgTraffic, double avgProhibtedItems){
-	currentState.tightenOrLoosenSecurity(avgTraffic,avgProhibtedItems);
+    public void tightenOrLoosenSecurity(int[] parameters){
+	currentState.tightenOrLoosenSecurity(parameters);
     }
 
     /**
@@ -101,7 +100,7 @@ public class AirportSecurity
 	String temp = currentState.getResponse();
 	return temp;
     }
-
+    //----------------------------------------------
     /**
      *calculates average traffic per days
      *@return the average traffic per day
@@ -117,7 +116,19 @@ public class AirportSecurity
     private double getAvgPrbItemsPerDay(){
 	return ((double) prbItemsCount)/((double) numberOfDays );
     }
-
+    //----------------------------------------------
+    /**
+     *gets the updated parameters
+     *@return the updated parameters for no.of travellers, prohibited items & days
+     */
+    praivet int[] getAllParameters(){
+	int[] tamp = new int[3];
+	temp[0] = noOfTravellers;
+	temp[1] = prbItemsCount;
+	temp[2] = numberOfDays;
+	return temp;
+    }
+    
     /**
      *returns the results stored
      *@return the results
