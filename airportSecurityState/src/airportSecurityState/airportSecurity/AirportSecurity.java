@@ -105,8 +105,8 @@ public class AirportSecurity
      *gets the updated parameters
      *@return the updated parameters for no.of travellers, prohibited items & days
      */
-    praivet int[] getAllParameters(){
-	int[] tamp = new int[3];
+    private int[] getAllParameters(){
+	int[] temp = new int[3];
 	temp[0] = noOfTravellers;
 	temp[1] = prbItemsCount;
 	temp[2] = numberOfDays;

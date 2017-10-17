@@ -68,7 +68,7 @@ public class LowRiskState implements AirportStateInterface
      *calculates average traffic per days
      *@return the average traffic per day
      **/
-    private double getAvgTrafficPerDay(int noOfTravellers, int numberOfDays){
+    public double getAvgTrafficPerDay(int noOfTravellers, int numberOfDays){
 	return  ((double) noOfTravellers)/((double) numberOfDays );
     }
 
@@ -76,7 +76,7 @@ public class LowRiskState implements AirportStateInterface
      *calculates the average prohibitted items per day
      *@return the average prohibited items per days
      **/
-    private double getAvgPrbItemsPerDay(int prbItemsCount, int numberOfDays){
+    public double getAvgPrbItemsPerDay(int prbItemsCount, int numberOfDays){
 	return ((double) prbItemsCount)/((double) numberOfDays );
     }    
     
