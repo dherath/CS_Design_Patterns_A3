@@ -15,7 +15,7 @@ public class HighRiskState implements AirportStateInterface
      **/
     public HighRiskState(AirportSecurity airportSecurity,MyLogger loggerIn){
 	this.airportSecurity = airportSecurity;
-	this.operations = airportSecurity.getHighRiskOperations();
+	this.operations = new int[]{2,4,6,8,10};
 	this.logger = loggerIn;
 	logger.writeMessage("constructed HighRiskstate class",logger.converToDebugVal(4));
     }

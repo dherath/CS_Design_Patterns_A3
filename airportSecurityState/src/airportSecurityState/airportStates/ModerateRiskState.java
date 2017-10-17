@@ -15,7 +15,7 @@ public class ModerateRiskState implements AirportStateInterface
      **/
     public ModerateRiskState(AirportSecurity airportSecurity,MyLogger loggerIn){
 	this.airportSecurity = airportSecurity;
-	this.operations = airportSecurity.getModerateRiskOperations();
+	this.operations = new int[]{2,3,5,8,9};
 	this.logger = loggerIn;
 	logger.writeMessage("constructed ModerateRiskState class",logger.converToDebugVal(4));
     }

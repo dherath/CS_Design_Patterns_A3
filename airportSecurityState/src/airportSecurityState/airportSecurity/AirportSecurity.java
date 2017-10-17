@@ -10,9 +10,9 @@ import airportSecurityState.util.MyLogger;
 public class AirportSecurity
 {
     //-------- operations ----------------------
-    private int[] lowRiskOperations;
-    private int[] moderateRiskOperations;
-    private int[] highRiskOperations;
+    //    private int[] lowRiskOperations;
+    // private int[] moderateRiskOperations;
+    //private int[] highRiskOperations;
     //------- states ---------------------------
     private AirportStateInterface currentState;
     private AirportStateInterface lowRiskState;
@@ -37,8 +37,8 @@ public class AirportSecurity
      **/
     public AirportSecurity(String inputFileName,MyLogger loggerIn){
 	//---------------------------------------
-	setLowAndHighRiskOperations(10);
-	setModerateRiskOperations();
+	//setLowAndHighRiskOperations(10);
+	//setModerateRiskOperations();
 	numberOfDays = 0;
 	previousDay = 0;
 	prevTimeStamp = 0;
@@ -161,72 +161,10 @@ public class AirportSecurity
 	this.currentState = newState;
     }
     
- 
-    //-------------------------------------------
-    // getter methods for Operations
-    //-------------------------------------------
-    /**
-     *getter for low risk operations
-     *@return the operations for low risk
-     **/
-    public int[] getLowRiskOperations(){
-	return lowRiskOperations;
-    }
-    
-
-    /**
-     *getter for moderate risk operations
-     *@return the operations for moderate risk
-     **/
-    public int[] getModerateRiskOperations(){
-	return moderateRiskOperations;
-    }
-
-    
-    /**
-     *getter for high risk operations
-     *@return the operations for high risk
-     **/
-    public int[] getHighRiskOperations(){
-	return highRiskOperations;
-    }
     
     //-------------------------------------------
     // private  Helper functions
     //--------------------------------------------
-
-    
-    //the agency determines what actions to take depending on the state
-    //therefore inorder to ensure that each state is closed for modification
-    //the operation Ids themselves where set here
-    
-    /**
-     *helper function that sets operations for Low Risk & HIgh Risk
-     *@param the size of all the operations
-     **/
-    private void setLowAndHighRiskOperations(int size){
-	lowRiskOperations = new int[5];
-	highRiskOperations = new int[5];	
-	int count1=0;
-	int count2=0;
-	//----------------------------------------
-	for(int i=0;i<size;i++){
-	    if(i%2==0){
-		highRiskOperations[count1]=i+2;
-		count1++;
-	    }else{
-		lowRiskOperations[count2]=i;
-		count2++;
-	    }
-	}
-    }
-
-    /**
-     *helper function to set moderate risk operations
-     **/
-    private void setModerateRiskOperations(){
-	moderateRiskOperations = new int[]{2,3,5,8,9};
-    }
 
     /**
      *preprocessline into subsections

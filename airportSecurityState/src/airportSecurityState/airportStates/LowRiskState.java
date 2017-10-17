@@ -15,7 +15,7 @@ public class LowRiskState implements AirportStateInterface
      **/
     public LowRiskState(AirportSecurity airportSecurity,MyLogger loggerIn){
 	this.airportSecurity = airportSecurity;
-	this.operations = airportSecurity.getLowRiskOperations();
+	this.operations = new int[]{1,3,5,7,9};
 	this.logger = loggerIn;
 	logger.writeMessage("constructed LowRiskState class",logger.converToDebugVal(4));
 	//	System.out.println("created low risk state");
