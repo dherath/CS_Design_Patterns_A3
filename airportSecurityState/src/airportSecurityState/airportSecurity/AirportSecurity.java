@@ -100,23 +100,7 @@ public class AirportSecurity
 	String temp = currentState.getResponse();
 	return temp;
     }
-    //----------------------------------------------
-    /**
-     *calculates average traffic per days
-     *@return the average traffic per day
-     **/
-    private double getAvgTrafficPerDay(){
-	return  ((double) noOfTravellers)/((double) numberOfDays );
-    }
 
-    /**
-     *calculates the average prohibitted items per day
-     *@return the average prohibited items per days
-     **/
-    private double getAvgPrbItemsPerDay(){
-	return ((double) prbItemsCount)/((double) numberOfDays );
-    }
-    //----------------------------------------------
     /**
      *gets the updated parameters
      *@return the updated parameters for no.of travellers, prohibited items & days
