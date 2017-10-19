@@ -122,7 +122,7 @@ public class AirportSecurity
     //-----------------------------------------
 
     /**
-     *sets current state to low risk
+     *sets current state to new state
      *@param the new state
      **/
     public void setState(AirportStateInterface newState){

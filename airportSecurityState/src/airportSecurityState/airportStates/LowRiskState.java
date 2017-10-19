@@ -21,7 +21,6 @@ public class LowRiskState implements AirportStateInterface
 	this.logger = loggerIn;
 	this.stateHelper = stateHelperIn;	
 	logger.writeMessage("constructed LowRiskState class",logger.converToDebugVal(4));
-	//	System.out.println("created low risk state");
     }
 
     //-------------- state Interface Implementations -------------
