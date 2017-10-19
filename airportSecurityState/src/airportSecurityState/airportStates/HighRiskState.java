@@ -15,7 +15,7 @@ public class HighRiskState implements AirportStateInterface
      *Constructor
      *@param the airport security 
      **/
-    public HighRiskState(AirportSecurity airportSecurity,MyLogger loggerIn.StateHelper stateHelperIn){
+    public HighRiskState(AirportSecurity airportSecurity,MyLogger loggerIn,StateHelper stateHelperIn){
 	this.airportSecurity = airportSecurity;
 	this.operations = new int[]{2,4,6,8,10};
 	this.logger = loggerIn;
