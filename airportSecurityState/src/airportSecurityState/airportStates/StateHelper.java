@@ -80,20 +80,15 @@ public class StateHelper
 	}
 	//------ check label format------------
 	labels[0] = input.substring(0,3);//Day
-	//	System.out.println(labels[0]);
 	labels[1] = input.substring(index[0]+1,index[0]+4);//TOD
-	//	System.out.println(labels[1]);
 	labels[2] = input.substring(index[1]+1,index[1]+8);//Airline
-	//	System.out.println(labels[2]);
 	labels[3] = input.substring(index[2]+1,index[2]+5);//Item
-	//	System.out.println(labels[3]);
 	count = 0;
 	for(int i=0;i<4;i++){
 	    if(labels[i].equals(list[i])){
 		count++;
 	    }
 	}
-	//	System.out.println(count);
 	if(count != 4){
 	    throw new RuntimeException("Invalid format in text file: incorrect label format");
 	}
@@ -117,7 +112,6 @@ public class StateHelper
 	if(isNumber(value)){
 	    currentDay = convertToInt(value);
 	    if(previousDay < currentDay){
-		//previousDay = currentDay;
 		numberOfDays++;
 	    }else if(previousDay > currentDay){
 		throw new RuntimeException("invalid format in input text : The days need to be in order");
@@ -139,7 +133,6 @@ public class StateHelper
 		throw new RuntimeException("Invalid input format: Minutes cannot exceed 60");
 	    }
 	    int time = h*60 + m ;
-	    // System.out.println("previous time : "+prevTimeStamp+" current time: "+time);
 	    if(currentDay == previousDay){
 		if(prevTimeStamp <= time){
 		    noOfTravellers++;
