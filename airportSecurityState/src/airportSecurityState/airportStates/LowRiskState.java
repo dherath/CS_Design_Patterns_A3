@@ -1,6 +1,7 @@
 package airportSecurityState.airportStates;
 
 import airportSecurityState.airportSecurity.AirportSecurity;
+import airportSecurityState.airportStates.StateHelper;
 import airportSecurityState.util.MyLogger;
 
 public class LowRiskState implements AirportStateInterface
@@ -8,15 +9,17 @@ public class LowRiskState implements AirportStateInterface
     private int[] operations;//the operations for Low risk state
     private AirportSecurity airportSecurity;
     private MyLogger logger;
+    private StateHelper stateHelper;//stat helper
 
     /**
      *Constructor
      *@param the airport security 
      **/
-    public LowRiskState(AirportSecurity airportSecurity,MyLogger loggerIn){
+    public LowRiskState(AirportSecurity airportSecurity,MyLogger loggerIn,StateHelper stateHelperIn){
 	this.airportSecurity = airportSecurity;
 	this.operations = new int[]{1,3,5,7,9};
 	this.logger = loggerIn;
+	this.stateHelper = stateHelperIn;	
 	logger.writeMessage("constructed LowRiskState class",logger.converToDebugVal(4));
 	//	System.out.println("created low risk state");
     }
@@ -26,7 +29,7 @@ public class LowRiskState implements AirportStateInterface
      *changes the state from low risk to moderate or high if needed
      *@param the parameters
      **/
-    public void tightenOrLoosenSecurity(int[] parameters){
+    public void tightenOrLoosenSecurity(String lineIn){
 	int flag = 0;
 	String[] data = stateHelper.preProcessLine(lineIn);
 	stateHelper.updateParameters(data[0],data[1],data[2]);
@@ -62,22 +65,6 @@ public class LowRiskState implements AirportStateInterface
 	}
 	temp += operations[operations.length-1] + "\n";
 	return temp;
-    }
-    /**
-     *calculates average traffic per days
-     *@return the average traffic per day
-     **/
-    public double getAvgTrafficPerDay(int noOfTravellers, int numberOfDays){
-	return  ((double) noOfTravellers)/((double) numberOfDays );
-    }
-
-    /**
-     *calculates the average prohibitted items per day
-     *@return the average prohibited items per days
-     **/
-    public double getAvgPrbItemsPerDay(int prbItemsCount, int numberOfDays){
-	return ((double) prbItemsCount)/((double) numberOfDays );
     }    
-    
     
 }
