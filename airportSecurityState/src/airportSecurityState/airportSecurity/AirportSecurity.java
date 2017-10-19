@@ -49,7 +49,7 @@ public class AirportSecurity
 	//System.out.println("high risk response - "+highRiskState.getResponse());
 	currentState = lowRiskState; //intiitally it is assumed that the airport is at low risk
 	//---------------------------------------
-	inputFile = new FileProcessor(inputFileName);
+	inputFile = new FileProcessor(inputFileName,logger);
 	//int flag = 0;
 	try{
 	    line = inputFile.readLine();

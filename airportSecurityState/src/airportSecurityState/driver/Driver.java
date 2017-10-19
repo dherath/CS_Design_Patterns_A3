@@ -11,13 +11,11 @@ public class Driver
 	    if(!checkArgs(args)){
 		throw new RuntimeException("number of arguments not sufficant.\nRetry with exactly 3 arguments using the following format with absolute paths for files:\n-Darg0=target for input file\n-Darg1=target for output file\n-Darg2= logger level between 0 & 4.\n(0-REALESE,1-INPUTS,2-PARAMETERS,3-STATE_CHANGE,4-CONSTRUCTOR)\n");		    
 	    }
-	    Results output = new Results(args[1]);
-	    MyLogger logger = new MyLogger(output);
-	    //------------------------------------------ 
 	    int loggerLevel = Integer.parseInt(args[2]);
-	    logger.setDebugValue(loggerLevel);
-	    //------------------------------------------
+	    MyLogger logger = new MyLogger(loggerLevel);
+	    //------------------------------------------ 
 	    AirportSecurity airport = new AirportSecurity(args[0],logger);
+	    Results output = new Results(args[1],logger);
 	    output.storeNewResult(airport.getResults());
 	    output.writeToFile();
 	}catch(RuntimeException e){
