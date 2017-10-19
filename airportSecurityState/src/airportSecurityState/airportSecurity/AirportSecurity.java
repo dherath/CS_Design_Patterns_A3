@@ -4,6 +4,7 @@ import airportSecurityState.airportStates.AirportStateInterface;
 import airportSecurityState.airportStates.LowRiskState;
 import airportSecurityState.airportStates.ModerateRiskState;
 import airportSecurityState.airportStates.HighRiskState;
+import airportSecurityState.airportStates.StateHelper;
 import airportSecurityState.util.FileProcessor;
 import airportSecurityState.util.MyLogger;
 
@@ -19,12 +20,7 @@ public class AirportSecurity
     private AirportStateInterface moderateRiskState;
     private AirportStateInterface highRiskState;
     //------------------------------------------
-    private int numberOfDays;//total number of days 
-    private int previousDay; // the index of the previous day
-    private int prevTimeStamp; // the previous time stamp of a traveller for the same day
-    private int prbItemsCount;//total number of prohibited items
-    private int noOfTravellers; //total number of travellers
-    private String[] prbItems;// list of prohibited items
+    private StateHelper stateHelper;
     //------------------------------------------
     private FileProcessor inputFile;// input file
     private String line;//a single line read from input file
@@ -39,15 +35,11 @@ public class AirportSecurity
 	//---------------------------------------
 	//setLowAndHighRiskOperations(10);
 	//setModerateRiskOperations();
-	numberOfDays = 0;
-	previousDay = 0;
-	prevTimeStamp = 0;
-	prbItemsCount = 0;
-	noOfTravellers = 0;
+
 	result = "";
-	prbItems = new String[]{"Gun","NailCutter","Blade","Knife"};
 	logger = loggerIn;
 	logger.writeMessage("constructed AirportSecurity class",logger.converToDebugVal(4));
+	stateHelper = new StateHelper(logger);
 	//---------------------------------------
 	lowRiskState = new LowRiskState(this,logger);
 	//System.out.println("low risk response - "+lowRiskState.getResponse());

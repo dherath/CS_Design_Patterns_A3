@@ -1,6 +1,5 @@
 package airportSecurityState.airportStates;
 
-import airportSecurityState.airportSecurity.AirportSecurity;
 import airportSecurityState.util.MyLogger;
 
 public class StateHelper 
@@ -46,11 +45,22 @@ public class StateHelper
     }
 
         /**
+     *gets the updated parameters
+     *@return the updated parameters for no.of travellers, prohibited items & days
+     */
+    public int[] getAllParameters(){
+	int[] temp = new int[3];
+	temp[0] = noOfTravellers;
+	temp[1] = prbItemsCount;
+	temp[2] = numberOfDays;
+	return temp;
+    }
+        /**
      *preprocessline into subsections
      *@param input, the read line from file
      *@return the String array with information
      **/
-    private String[] preProcessLine(String input){
+    public String[] preProcessLine(String input){
 	String[] temp = new String[4];
 	int[] index = new int[3];//index of semicolon in line
 	String[] labels = new String[4];
@@ -100,7 +110,7 @@ public class StateHelper
      *@param s2, preprocessed string with TOD info
      *@param s3, preprocessed string with item info
      **/
-    private void updateParameters(String s1, String s2, String s3){
+    public void updateParameters(String s1, String s2, String s3){
 	int currentDay = previousDay;
 	String loggerMessage = "";
 	//-------------update number of days -------------------------------

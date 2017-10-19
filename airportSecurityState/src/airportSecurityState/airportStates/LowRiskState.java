@@ -28,11 +28,10 @@ public class LowRiskState implements AirportStateInterface
      **/
     public void tightenOrLoosenSecurity(int[] parameters){
 	int flag = 0;
-	int travelers = parameters[0];
-	int items = parameters[1];
-	int days = parameters[2];
-	double avgTraffic = getAvgTrafficPerDay(travelers,days);
-	double avgProhibtedItems = getAvgPrbItemsPerDay(items,days);
+	String[] data = stateHelper.preProcessLine(lineIn);
+	stateHelper.updateParameters(data[0],data[1],data[2]);
+	double avgTraffic = stateHelper.getAvgTrafficPerDay();
+	double avgProhibtedItems = stateHelper.getAvgPrbItemsPerDay();
 	String loggerMessage = "average Traffic per Day: "+avgTraffic+" average prohibitted iterms per Day: "+avgProhibtedItems;
 	logger.writeMessage(loggerMessage,logger.converToDebugVal(2));	
 	if(avgTraffic >= 4.0 || avgProhibtedItems >= 1.0 ){
