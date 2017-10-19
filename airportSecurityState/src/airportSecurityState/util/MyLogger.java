@@ -19,10 +19,11 @@ public class MyLogger{
 
     /**
      *Constructor
-     *@param the instance of results used
+     *@param the debug level
      **/
-    public MyLogger(Results rIn){
-	output = rIn;
+    public MyLogger(int levelIn){
+	this.setDebugValue(levelIn);
+	output = new Results(this);
     }
 
     /**
