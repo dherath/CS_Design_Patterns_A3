@@ -14,10 +14,12 @@ public class Results implements StdoutDisplayInterface, FileDisplayInterface
     private FileWriter fileWriter = null;
     private BufferedWriter bufferedWriter = null;
 
+    /**
+     *the temp constructor for logger output
+     **/
     public Results(MyLogger logger){
 	text = null;
 	this.outputFileName = null;
-	//	logger.writeMessage("constructed temp-Results class for logger",logger.converToDebugVal(4));
     }
     
     /**
