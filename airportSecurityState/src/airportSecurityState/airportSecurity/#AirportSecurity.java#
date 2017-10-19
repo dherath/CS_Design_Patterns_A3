@@ -39,11 +39,7 @@ public class AirportSecurity
 	//---------------------------------------
 	//setLowAndHighRiskOperations(10);
 	//setModerateRiskOperations();
-	numberOfDays = 0;
-	previousDay = 0;
-	prevTimeStamp = 0;
-	prbItemsCount = 0;
-	noOfTravellers = 0;
+
 	result = "";
 	prbItems = new String[]{"Gun","NailCutter","Blade","Knife"};
 	logger = loggerIn;

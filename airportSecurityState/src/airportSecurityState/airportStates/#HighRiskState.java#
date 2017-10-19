@@ -30,9 +30,7 @@ public class HighRiskState implements AirportStateInterface
      **/
     public void tightenOrLoosenSecurity(int[] parameters){
 	int flag = 0;
-	int travelers = parameters[0];
-	int items = parameters[1];
-	int days = parameters[2];
+
 	double avgTraffic = getAvgTrafficPerDay(travelers,days);
 	double avgProhibtedItems = getAvgPrbItemsPerDay(items,days);
 	String loggerMessage = "average Traffic per Day: "+avgTraffic+" average prohibitted iterms per Day: "+avgProhibtedItems;
