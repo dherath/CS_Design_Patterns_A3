@@ -17,7 +17,6 @@ public class Results implements StdoutDisplayInterface, FileDisplayInterface
     public Results(MyLogger logger){
 	text = null;
 	this.outputFileName = null;
-	//	logger.writeMessage("constructed temp-Results class for logger",logger.converToDebugVal(4));
     }
     
     /**
