@@ -1,5 +1,6 @@
 package airportSecurityState.util;
 
+import airportSecurityState.util.MyLogger;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -16,9 +17,10 @@ public class FileProcessor
      * constructor
      *@param s, the absolute file path
      **/
-    public FileProcessor(String s){
+    public FileProcessor(String s,MyLogger logger){
 	this.inputFileName = s;
 	try{
+	    logger.writeMessage("constructed FileProcessor class",logger.converToDebugVal(4));
 	    inputFile = new File(inputFileName);
 	    fileReader = new FileReader(inputFile);
 	    bufferedReader = new BufferedReader(fileReader);
