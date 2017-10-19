@@ -4,7 +4,6 @@ import airportSecurityState.util.MyLogger;
 
 public class StateHelper 
 {
-    private AirportSecurity airportSecurity;
     private MyLogger logger;//reference to logger
     private int numberOfDays;//total number of days 
     private int previousDay; // the index of the previous day
@@ -32,7 +31,7 @@ public class StateHelper
      *calculates average traffic per days
      *@return the average traffic per day
      **/
-    public double getAvgTrafficPerDay(int noOfTravellers, int numberOfDays){
+    public double getAvgTrafficPerDay(){
 	return  ((double) noOfTravellers)/((double) numberOfDays );
     }
 
@@ -40,7 +39,7 @@ public class StateHelper
      *calculates the average prohibitted items per day
      *@return the average prohibited items per days
      **/
-    public double getAvgPrbItemsPerDay(int prbItemsCount, int numberOfDays){
+    public double getAvgPrbItemsPerDay(){
 	return ((double) prbItemsCount)/((double) numberOfDays );
     }
 

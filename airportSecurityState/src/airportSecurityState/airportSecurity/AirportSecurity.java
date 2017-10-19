@@ -41,11 +41,11 @@ public class AirportSecurity
 	logger.writeMessage("constructed AirportSecurity class",logger.converToDebugVal(4));
 	stateHelper = new StateHelper(logger);
 	//---------------------------------------
-	lowRiskState = new LowRiskState(this,logger);
+	lowRiskState = new LowRiskState(this,logger,stateHelper);
 	//System.out.println("low risk response - "+lowRiskState.getResponse());
-	moderateRiskState = new ModerateRiskState(this,logger);
+	moderateRiskState = new ModerateRiskState(this,logger,stateHelper);
 	//System.out.println("moderate risk response - "+moderateRiskState.getResponse());
-	highRiskState = new HighRiskState(this,logger);
+	highRiskState = new HighRiskState(this,logger,stateHelper);
 	//System.out.println("high risk response - "+highRiskState.getResponse());
 	currentState = lowRiskState; //intiitally it is assumed that the airport is at low risk
 	//---------------------------------------
@@ -93,17 +93,6 @@ public class AirportSecurity
 	return temp;
     }
 
-    /**
-     *gets the updated parameters
-     *@return the updated parameters for no.of travellers, prohibited items & days
-     */
-    private int[] getAllParameters(){
-	int[] temp = new int[3];
-	temp[0] = noOfTravellers;
-	temp[1] = prbItemsCount;
-	temp[2] = numberOfDays;
-	return temp;
-    }
     
     /**
      *returns the results stored
