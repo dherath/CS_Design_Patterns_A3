@@ -1,8 +1,6 @@
 ## CS 542 - Assignment 3
 
 Name - Jerome Dinal Herath Muthukumaranage
-B number - B00708543
-email - jherath1@binghamton.edu
 
 Assuming you are in the directory containing this README:
 
